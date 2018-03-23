@@ -1,3 +1,7 @@
+**My JSON RPC server example**
+
+Server example:
+```js
 const {add_method, create_rpc_server} = require('./rpc');
 
 add_method('add', async (args) => {
@@ -12,3 +16,4 @@ add_method('subtract', async (args) => {
 create_rpc_server.listen(3000, () => {
   console.log('JSON RPC Server is run on port 3000');
 });
+```
