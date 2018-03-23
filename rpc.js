@@ -1,4 +1,4 @@
-const {createServer} = require('rpc');
+const {createServer} = require('http');
 
 const methods = [];
 const json_response = (data = {}) => JSON.stringify(data);
