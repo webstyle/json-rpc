@@ -1,4 +1,5 @@
-**My JSON RPC server example**
+**JSON RPC 2.0 Server without npm packages**
+Promises, Async/Await
 
 Server example:
 ```js
