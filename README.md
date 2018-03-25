@@ -19,8 +19,23 @@ create_rpc_server.listen(3000, () => {
   console.log('JSON RPC Server is run on port 3000');
 });
 ```
+**Installation**
+--
+clone repo:
+```bash
+# Clone repository
+$ git clone https://github.com/WebStyle/json-rpc.git
 
-**Method definition**
+# Change directory
+$ cd json-rpc
+
+# Then simply start your app
+$ npm start
+```
+
+
+**Method definition example**
+--
 ```js
 const { add_method } = require('./rpc');
 
