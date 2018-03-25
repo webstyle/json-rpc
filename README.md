@@ -4,7 +4,7 @@ You can use ES6 Promises, Async/Await.
 
 Server example:
 ```js
-const {add_method, create_rpc_server} = require('./rpc');
+const { add_method, create_rpc_server } = require('./rpc');
 
 add_method('add', async (args) => args[0] + args[1]);
 
