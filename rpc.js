@@ -1,4 +1,4 @@
-const {createServer} = require('http');
+const { createServer } = require('http');
 
 const methods = [];
 const json_response = (data = {}) => JSON.stringify(data);
@@ -6,22 +6,28 @@ const add_method = (name, func) => methods.push({name, func});
 const find_method = (name) => methods.find(item => item.name === name);
 
 const create_rpc_server = createServer((req, res) => {
-  if (req.method !== 'POST') return res.end("Method Not Allowed");
+  if (req.method !== 'POST') {
+    res.statusCode = 403;
+    return res.end("Method Not Allowed");
+  }
 
   res.setHeader('Content-Type', 'application/json');
   let req_body;
   req.on('data', (data) => req_body = data);
-  req.on('end', () => {
-    const {method, params} = JSON.parse(req_body);
-    if (!method) return res.end("Method required");
-    if (!params) return res.end("Params required");
+  req.on('end', async () => {
+    const { method, params } = JSON.parse(req_body);
+    if (!method) return res.end(json_response({error: { message: "Method required" }}));
+    if (!params) return res.end(json_response({ error: { message: "Params required" } }));
 
     const {func} = find_method(method);
     if (!func) return res.end("Method not found");
 
-    func(params)
-      .then(response => res.end(json_response({result: response, error: {}})))
-      .catch(error => res.end(json_response({result: {}, error})))
+    try {
+      const response = await func(params);
+      return res.end(json_response({result: response, error: {}}));
+    } catch(error) {
+      return res.end(json_response({result: {}, error}));
+    }
   });
 });
 

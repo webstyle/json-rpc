@@ -1,4 +1,4 @@
-const {add_method, create_rpc_server} = require('./rpc');
+const { add_method, create_rpc_server } = require('./rpc');
 
 add_method('add', async (args) => {
   return args[0] + args[1];
