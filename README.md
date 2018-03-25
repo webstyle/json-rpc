@@ -2,7 +2,7 @@
 --
 You can use ES6 Promises, Async/Await.
 
-Server example:
+HTTP Server example:
 ```js
 const { add_method, create_rpc_server } = require('./rpc');
 
