@@ -17,3 +17,15 @@ create_rpc_server.listen(3000, () => {
   console.log('JSON RPC Server is run on port 3000');
 });
 ```
+
+**Method definition**
+```js
+const { add_method } = require('./rpc');
+
+add_method('method_name', async (args) => {
+  // your code 
+  // you must return data
+  
+  return {};
+});
+```
