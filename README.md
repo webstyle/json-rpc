@@ -33,6 +33,7 @@ add_method('method_name', async (args) => {
 ```
 
 **Server Errors**
+If you should like to return an error from an method request to indicate a failure. You can use `send_error` function and send error object. Error object must be [JSON RPC 2.0 error object specification](http://www.jsonrpc.org/specification#error_object) 
 ```js
 const { send_error } = require('./rpc');
 
