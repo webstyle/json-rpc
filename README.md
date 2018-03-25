@@ -21,7 +21,7 @@ create_rpc_server.listen(3000, () => {
 ```
 **Installation**
 --
-clone repo:
+Quick guide:
 ```bash
 # Clone repository
 $ git clone https://github.com/WebStyle/json-rpc.git
