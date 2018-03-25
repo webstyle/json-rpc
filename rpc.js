@@ -4,6 +4,7 @@ const methods = [];
 const json_response = (data = {}) => JSON.stringify(data);
 const add_method = (name, func) => methods.push({name, func});
 const find_method = (name) => methods.find(item => item.name === name);
+const error = (data) => Promise.reject(data);
 
 const create_rpc_server = createServer((req, res) => {
   if (req.method !== 'POST') {
@@ -16,11 +17,11 @@ const create_rpc_server = createServer((req, res) => {
   req.on('data', (data) => req_body = data);
   req.on('end', async () => {
     const { method, params } = JSON.parse(req_body);
-    if (!method) return res.end(json_response({error: { message: "Method required" }}));
-    if (!params) return res.end(json_response({ error: { message: "Params required" } }));
+    if (!method) return res.end(json_response({error: { message: "Method required", code: -32700 }}));
+    if (!params) return res.end(json_response({ error: { message: "Params required", code: -32700 } }));
 
     const {func} = find_method(method);
-    if (!func) return res.end("Method not found");
+    if (!func) return res.end(json_response({ error: { message: "Method not found", code: -32601}}));
 
     try {
       const response = await func(params);
@@ -33,5 +34,5 @@ const create_rpc_server = createServer((req, res) => {
 
 
 module.exports = {
-  add_method, create_rpc_server
+  add_method, create_rpc_server, error
 };

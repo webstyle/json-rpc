@@ -1,7 +1,8 @@
-const { add_method, create_rpc_server } = require('./rpc');
+const { add_method, create_rpc_server, error } = require('./rpc');
 
 add_method('add', async (args) => {
-  return args[0] + args[1];
+  return error({message: "error"});
+  // return args[0] + args[1];
 });
 
 add_method('subtract', async (args) => {

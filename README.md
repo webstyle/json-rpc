@@ -29,3 +29,12 @@ add_method('method_name', async (args) => {
   return {};
 });
 ```
+
+**Server Errors**
+```js
+const { error } = require('./rpc');
+
+add_method('method_name', async (args) => {
+  return error({ message: "error_message", code: -32603});
+});
+```
