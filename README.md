@@ -1,6 +1,6 @@
 **JSON RPC 2.0 Server without npm packages.**
 --
-You can use ES6 Promises, Async/Await.
+You can use Promises, Async/Await.
 
 HTTP Server example:
 ```js
