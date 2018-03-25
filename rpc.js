@@ -4,7 +4,7 @@ const methods = [];
 const json_response = (data = {}) => JSON.stringify(data);
 const add_method = (name, func) => methods.push({name, func});
 const find_method = (name) => methods.find(item => item.name === name);
-const error = (data) => Promise.reject(data);
+const send_error = (data) => Promise.reject(data);
 
 const create_rpc_server = createServer((req, res) => {
   if (req.method !== 'POST') {
@@ -34,5 +34,5 @@ const create_rpc_server = createServer((req, res) => {
 
 
 module.exports = {
-  add_method, create_rpc_server, error
+  add_method, create_rpc_server, send_error
 };
