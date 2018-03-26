@@ -4,16 +4,29 @@ You can use Promises, Async/Await.
 
 HTTP Server example:
 ```js
-const { add_method, create_rpc_server } = require('./rpc');
+const { add_method, http_server } = require('./rpc');
 
 add_method('add', async (args) => args[0] + args[1]);
 
-add_method('subtract', async (args) => args[0] - args[1]);
+add_method('subtract', async (args) =>  args[0] - args[1]);
 
-create_rpc_server.listen(3000, () => {
+http_server.listen(3000, () => {
   console.log('JSON RPC Server is run on port 3000');
 });
 ```
+--
+TCP Server example
+```js
+const { add_method, tcp_server } = require('./rpc');
+
+add_method('add', async (args) => args[0] + args[1]);
+
+add_method('subtract', async (args) =>  args[0] - args[1]);
+
+tcp_server.listen(8124);
+console.log('JSON RPC TCP Server is run on port 8124');
+```
+
 **Installation**
 --
 Quick guide:
