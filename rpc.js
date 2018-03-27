@@ -48,9 +48,9 @@ const tcp_server = net.createServer(c => {
 
     try {
       const response = await func(params);
-      return c.write(json_response({result: response, error: {}}));
+      return c.write(json_response({method, result: response, error: {}}));
     } catch(error) {
-      return c.write(json_response({result: {}, error}));
+      return c.write(json_response({method, result: {}, error}));
     }
   });
 });
